@@ -7,6 +7,8 @@ const user = require('./routes/route_user');
 const employee = require('./routes/route_employee');
 const { collection } = require('./models/user');
 const PORT = process.env.PORT || 5000;
+require('dotenv').config();
+
 
 const app = express();
 app.use(express.json());
@@ -14,9 +16,8 @@ app.use(express.json());
 const cors = require('cors');                                           // UPDATE FOR ASSSINGMENT 2
 app.use(cors());
 
-
 const mongoDb = process.env.MONGO_URI
-require('dotenv').config();
+
 mongoose.connect(mongoDb).then(() => {
     console.log("Connected to the database.");
 }).catch(err => {
